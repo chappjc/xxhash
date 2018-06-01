@@ -102,7 +102,7 @@ func check(sema *sema, fn string) {
 		if len(parts) != 2 || len(parts[0]) < 1 {
 			continue
 		}
-		oh, err := strconv.ParseUint(strings.TrimSpace(parts[0]), 10, 64)
+		oh, err := strconv.ParseUint(strings.TrimSpace(parts[0]), 16, 64)
 		if err != nil {
 			errorf("error: %v", err)
 			continue
@@ -130,9 +130,9 @@ func printHash(fn string) {
 		return
 	}
 	if *use32 {
-		printf("%-10d\t%s", h, fn)
+		printf("%08x\t%s", h, fn)
 	} else {
-		printf("%-20d\t%s", h, fn)
+		printf("%016x\t%s", h, fn)
 	}
 }
 
